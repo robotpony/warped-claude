@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(node -e:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/mx/writing/obsidian-plugins/space-command/node_modules/obsidian"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bun x ccusage statusline"
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1753999779074
+  }
+}

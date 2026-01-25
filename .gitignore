@@ -1,0 +1,15 @@
+cache/
+stats-cache.json
+.DS_Store
+debug/
+file-history/
+ide/
+plans/
+projects/
+session-env/
+shell-snapshots/
+statsig/
+telemetry/
+todos/
+history.jsonl
+plugins/
