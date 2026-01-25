@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm run build:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Read(//Users/mx/.claude/**)"
     ],
     "additionalDirectories": [
       "/Users/mx/writing/obsidian-plugins/space-command/node_modules/obsidian"
