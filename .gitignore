@@ -14,3 +14,6 @@ telemetry/
 todos/
 history.jsonl
 plugins/
+image-cache/
+paste-cache/
+tasks/
