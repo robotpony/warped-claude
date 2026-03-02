@@ -195,8 +195,8 @@ Before sending any document:
 
 1. Can someone understand the main point from the first paragraph?
 2. Are there any sections that could be cut without losing value?
-3. Have I named the trade-offs explicitly?
+3. Are the trade-offs named explicitly?
 4. Are timelines and ownership specific?
 5. Are there undefined terms that could confuse readers?
-6. Did I state what I don't know?
+6. Do we state what we don't know?
 7. Is there a clear next action or decision?
