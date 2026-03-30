@@ -18,3 +18,8 @@ plugins/
 image-cache/
 paste-cache/
 tasks/
+
+backups/
+mcp-needs-auth-cache.json
+policy-limits.json
+sessions/

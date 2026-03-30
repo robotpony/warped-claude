@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run build:*)",
       "Bash(node -e:*)",
-      "Read(//Users/mx/.claude/**)"
+      "Read(//Users/mx/.claude/**)",
+      "Read(//Users/bruce/projects/nb-monorepo/**)",
+      "Read(//Users/bruce/projects/**)",
+      "Bash(find /Users/bruce/projects/nb-monorepo/modules/nb-frontend/src/pages/sales-v3* -type f -name \"*.tsx\")",
+      "Bash(xargs basename -a)"
     ],
     "additionalDirectories": [
       "/Users/mx/writing/obsidian-plugins/space-command/node_modules/obsidian"

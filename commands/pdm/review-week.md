@@ -17,3 +17,5 @@ argument-hint: [additional-instructions]
    - **What's most important** — top 3 priorities with reasoning
    - **What needs investigation** — items with insufficient detail or unresolved questions
    - **What needs more detail** — gaps, missing owners, undefined scope
+   - **What should become tickets** — items with enough detail to act on but no
+     ClickUp link. Include suggested ticket title and list/folder if obvious.

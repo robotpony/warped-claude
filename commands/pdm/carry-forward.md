@@ -12,4 +12,7 @@ argument-hint: [additional-instructions]
 6. Write a # Carry-forward for week of [date] section at the bottom with:                                   
 - Grouped open TODOs                                                                                      
 - "What got done" summary                                                                                 
-7. Optionally seed next week's log file with the carry-forward TODOs     
+7. Carry open threads from the Context section into the carry-forward:
+   - Include threads that are unresolved (no linked doc, no decision noted)
+   - Drop threads that now have a dedicated linked doc
+8. Optionally seed next week's log file with the carry-forward TODOs + context     
