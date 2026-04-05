@@ -62,6 +62,41 @@ Every document over one page needs an executive summary at the top. Write it las
 - Include clear column headers
 - Keep cells brief; link to details
 
+### Diagrams (ASCII layout sketches)
+
+Use indented plain-text sketches in fenced code blocks for UI layouts, flows, and wireframes in PRDs. These communicate structure and hierarchy to design and eng without implying pixel-level decisions.
+
+**Style rules:**
+- No box-drawing characters (`┌ ┐ └ ┘ │ ─`). They render inconsistently and create ragged right edges.
+- Use indentation (2 spaces) for hierarchy instead of boxes
+- Use dot leaders (`...`) to connect labels to values or actions across a line
+- Use `>` for collapsed/expandable sections, `▼` for expanded
+- Use section headers as plain text at the top of each block, with actions right-aligned
+- One blank line between logical sections within a diagram
+- Keep diagrams under 30 lines; split into multiple if needed
+
+**Example:**
+
+```
+Review Data Coverage                              [Assign]
+
+  Tabs: [Traffic*] [Spend]
+
+  Summary cards:
+    52 detected  |  85% categorized  |  5 need attention
+  Progress: ████████████████████░░░░ 85%
+
+  Uncategorized Sources
+    partner_email .............. 4,200 visits  [Assign to ▾]
+      utm_source=partner, utm_medium=email
+    spring_sale_sms ............ 2,100 visits  [Assign to ▾]
+
+  > View all 52 detected platforms
+  + Add a custom platform
+```
+
+**When to use:** Any PRD or design spec where you need to communicate view structure, information hierarchy, or interaction patterns. Not a substitute for mockups — these show *what information goes where*, not how it looks.
+
 ## Language Rules
 
 Inherited from blog writing standards:
