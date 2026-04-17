@@ -52,10 +52,11 @@ Every document over one page needs an executive summary at the top. Write it las
 - Keep list items parallel in structure
 - One sentence per item unless complexity requires more
 
-### Em-dashes
-- Avoid entirely in professional documents
+### Dashes
+- Avoid em-dashes entirely in professional documents
 - Use commas, semicolons, or separate sentences instead
 - Exception: occasional use for aside in informal updates
+- En-dashes follow the same rule. Don't use an en-dash where a colon, comma, or parenthetical already provides the separation (e.g., "pdm: — Product management" should be "pdm: Product management")
 
 ### Tables
 - Use for comparisons and structured data

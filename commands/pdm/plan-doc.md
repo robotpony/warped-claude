@@ -6,7 +6,7 @@ argument-hint: <topic-name>
 
 1. Accept $ARGUMENTS as topic name
 2. Research the topic if needed (web search, codebase, MCP tools)
-3. Create "[Topic] plan.md" in the notes vault root with this structure:
+3. Create "[Topic] plan.md" in the notes vault root. Do not start with an H1 (Obsidian renders the filename as the title). Use this structure:
    - **Why** (problem/motivation)
    - **What** (scope and approach)
    - **Steps** (numbered, with owner where known)

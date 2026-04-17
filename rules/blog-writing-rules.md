@@ -39,6 +39,7 @@ Metric with optional US/imperial conversions: "20°C (68°F)", "5 km (3 miles)"
 - Limit em-dashes to 1-2 per post
 - Use em-dashes only for abrupt interruptions or dramatic asides
 - Prefer commas, semicolons, or colons otherwise
+- En-dashes: same restraint. Never pair a dash with another separator that already does the job (colon + dash, comma + dash)
 
 ### Footnotes
 Use informal web style: linked text or parenthetical citations, not academic superscripts.

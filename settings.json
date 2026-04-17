@@ -19,5 +19,8 @@
   },
   "feedbackSurveyState": {
     "lastShownTime": 1753999779074
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
   }
 }
