@@ -19,30 +19,38 @@ ClickUp integration, etc.) and let the user pick one.
 
 The tip is a single Slack message. Follow these constraints exactly:
 
-- **3-7 sentences.** No more.
-- **Plain text only.** No markdown headers, no code blocks, no bullet lists.
-  Slack formatting (bold with asterisks, italic with underscores) is fine.
-- **Name the specific command or technique** so the reader can try it immediately.
-- **Open with a direct statement** of what the tip enables, then name the
-  command or technique. Not the other way around.
-- **Use inline numbered lists** (e.g., "It does three things: 1) X, 2) Y, and
-  3) Z") to pack specifics into a short message. Prefer this over prose when
-  listing what a command produces.
-- **Close with why it compounds** or what changes when you do this regularly.
-- **Tone: direct, peer-to-peer.** "Get more out of X by doing Y" or "Try Z
-  after your next session." Not "You should always" or "Best practice."
+- **Slack formatting only.** Bold with asterisks, italic with underscores,
+  backtick for commands. No markdown headers or code blocks.
+- **Structure** (all parts required, in this order):
+  1. **Header line:** `:party_cat: Bruce's Claude tip of the week :party_cat:`
+  2. **One-sentence intro:** Direct statement of what the tip enables.
+  3. **Numbered list (2-4 items):** Concrete actions the reader can take. Each
+     item is one sentence. Line-break separated, not inline.
+  4. **Payoff paragraph:** 1-2 sentences on why this compounds over time.
+  5. **Personal practice note:** 1 sentence on your own cadence or experience.
+  6. **"Here's what it looks like" close:** Name the specific command with
+     backtick formatting, and optionally note where your tools live.
+- **Tone: direct, peer-to-peer.** "Get more out of X by doing Y." Not "You
+  should always" or "Best practice."
 - **Canadian English spelling.**
 - Do not include links.
-- Do not write to any file. Output the tip directly in the conversation.
+- Do not write to any file. Output the tip directly in the conversation so the
+  user can copy-paste into Slack.
 
 ## Example
 
 Topic: session retrospectives
 
-> Get more out of your Claude sessions by running a retro at the end. After a
-> longer working session, try `/prd:session-retrospective`. It reviews what you
-> just did together and produces three things: 1) where time went to mechanics
-> instead of substance, 2) where existing commands could have saved steps, and
-> 3) where you could front-load context to cut round trips. The payoff is
-> cumulative. Each retro surfaces a pattern you can bake into a command or habit,
-> so the next session starts sharper.
+> :party_cat: Bruce's Claude tip of the week :party_cat:
+>
+> Get more out of your Claude sessions by running a retro at the end of a session:
+>
+> 1. Ask Claude to review the current session to recommend improvements for your local commands/skills and things the human can improve on
+> 2. Also direct Claude to review any long-running, or inefficient commands, and consider different ways to approach.
+> 3. Make improvements to your local skills and commands.
+>
+> The payoff is cumulative. Each retro surfaces a pattern you can bake into a command or habit, so the next session starts sharper. I find running a few retros a week for both good and bad sessions helpful to improve my patterns and tooling.
+>
+> In my sessions, the command looks like:
+> `/prd:session-retrospective [additional instructions]`
+> It suggests changes to my local `.claude` tools (which I keep up to date on Github).
