@@ -1,8 +1,9 @@
-.credentials.json
+.DS_Store
 plugins/known_marketplaces.json
 cache/
 stats-cache.json
-.DS_Store
+settings.json
+.credentials.json
 debug/
 file-history/
 ide/
@@ -18,3 +19,5 @@ plugins/
 image-cache/
 paste-cache/
 tasks/
+backups/
+*json
