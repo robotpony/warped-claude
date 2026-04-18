@@ -21,3 +21,7 @@ paste-cache/
 tasks/
 backups/
 *json
+backups/
+mcp-needs-auth-cache.json
+policy-limits.json
+sessions/

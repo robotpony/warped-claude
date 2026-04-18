@@ -4,7 +4,7 @@ Re-read (checking for updates to the post) and think deeply about the content. P
 
 - provide a quality score out of 10, based on similarity to Wired or other major tech publications and writers (like Paul Graham, John Carmack, Linus Torovalds, etc.)
 - gauge adherance to the project style guideline using checkmarks ✅ and Xs ❌, including styles for headers, titles, and writing themes
-- Use the style guide that can be found in @a-style-guide-for-bruce.md or @style-guide.md
+- Use the style guide at `rules/blog-writing-rules.md` (and `rules/blog-writing-reference.md` for post types and themes)
 - check spelling and grammar, and suggest fixes
 - check for factual correctness
 
