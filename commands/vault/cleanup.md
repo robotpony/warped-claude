@@ -1,3 +1,9 @@
+---
+name: vault:cleanup
+description: Cleans up an Obsidian vault, using a checklist and rules encoded in Claude.md
+argument-hint: <additional directions>
+---
+
 # Obsidian Vault Cleanup
 
 Audit and organize the current Obsidian vault. Run from the vault root.
@@ -47,7 +53,29 @@ For each misfiled file:
 - Explain the reasoning
 - Offer to move it
 
-### 4. Structure gaps
+### 4. Folder-specific rule enforcement
+
+For each folder that has explicit rules documented in CLAUDE.md, scan its files and validate them against those rules. Derive the checks from what CLAUDE.md actually specifies — don't assume a fixed set of rules. Common things CLAUDE.md may define:
+
+- Required frontmatter fields and their formats
+- Allowed tag values or taxonomies
+- Naming conventions (slugs, date prefixes, case)
+- Companion files that must stay in sync (e.g., a log or index file)
+- Structural constraints (flat vs. sub-folders, one file per topic, etc.)
+
+For each folder with documented rules:
+
+1. List the rules extracted from CLAUDE.md for that folder
+2. Scan files in that folder and check each rule
+3. Report violations grouped by rule, showing affected files
+4. For fixable issues (missing fields, wrong case, missing log entries), offer to apply the fix
+5. For judgment calls (wrong tag, misnamed file), show the issue and ask
+
+Skip folders with no folder-specific rules in CLAUDE.md. Skip `gdrive/` and dot-folders entirely.
+
+Present findings folder by folder. Wait for direction before making any changes.
+
+### 6. Structure gaps
 
 Identify patterns that suggest missing rules or folders:
 
@@ -57,7 +85,7 @@ Identify patterns that suggest missing rules or folders:
 
 Summarize findings and suggest specific additions to CLAUDE.md or README.md.
 
-### 5. Rule improvements
+### 7. Rule improvements
 
 Based on the audit, suggest updates to the vault's filing rules:
 
