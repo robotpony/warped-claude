@@ -10,6 +10,7 @@ commands/
   prd/       Product requirements (PRDs, teardowns, reviews)
   warped/    Blog writing (warpedperspective.com)
   mx/        Software engineering (general purpose)
+  obs/       Obsidian vault utilities
   gdoc-pull.md   Standalone: pull a Google Doc into the vault
 rules/
   product-writing-rules.md    PRD structure, formatting, anti-patterns
@@ -103,6 +104,14 @@ Lightweight development commands for side projects. Not domain-specific.
 | `/mx:cleanup` | Review and clean up code, docs, unused files. |
 | `/mx:iterate` | Review user feedback and iterate on work in progress. |
 | `/mx:finish` | Finalize: version bump, build, changelog, readme, commit message. |
+
+## obs: Obsidian vault utilities
+
+Commands for maintaining Obsidian vaults. These assume Claude is run from the vault root and read structure rules from the vault's README.md and CLAUDE.md files.
+
+| Command | What it does |
+|---------|-------------|
+| `/obs:cleanup` | Audits vault structure: finds empty files, misfiled notes, and structure gaps. Offers to fix issues and suggests rule improvements. |
 
 ## Rules files
 
