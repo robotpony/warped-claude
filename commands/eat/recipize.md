@@ -10,23 +10,32 @@ Parse arguments: the first token is the URL. Everything after it is an optional 
 
 ## Steps
 
-**1. Fetch the page.** Use WebFetch to retrieve the URL. Extract: title, description/intro, ingredients (all groups), method steps, yield/servings, prep time, cook time, total time, cuisine, and dietary tags.
+**1. Fetch the page.** Try the following in order, stopping at the first that succeeds:
+
+1. **curl**: Run `curl -sL "<url>" -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"` via Bash, save to a temp file, then extract recipe content using python3 — parse JSON-LD `<script type="application/ld+json">` blocks for `@type: Recipe` data. If no JSON-LD found, extract raw text from `<main>` or `<article>` tags.
+2. **claude-in-chrome**: If curl fails or returns no recipe data, load `mcp__claude-in-chrome__tabs_context_mcp` via ToolSearch, get a tab (create one if needed), navigate to the URL with `mcp__claude-in-chrome__navigate`, then extract content with `mcp__claude-in-chrome__get_page_text`.
+3. **WebFetch**: If both fail, fall back to WebFetch.
+
+Extract from whichever source succeeds: title, description/intro, ingredients (all groups), method steps, yield/servings, prep time, cook time, total time, cuisine, and dietary tags.
 
 **2. Convert to the recipe format below.** Follow these rules precisely:
 
 - All measurements MUST use metric units. Convert any imperial or US volumetric measures:
-  - Volume: cups → ml (1 cup = 240 ml), tbsp → ml (1 tbsp = 15 ml), tsp → ml (1 tsp = 5 ml)
+  - Volume: cups → ml (1 cup = 240 ml)
   - Weight: oz → g (1 oz = 28 g), lb → g or kg
   - Temperature: Fahrenheit → Celsius, keep °F in parentheses (e.g. `190°C (375°F)`)
   - Leave metric measures as-is
   - Round sensibly: 28.35 g → 30 g, 236 ml → 240 ml
+- **Spoon measures** (teaspoon, tablespoon): keep as displacement — do NOT convert to ml. Write out the full word: `1 teaspoon`, `2 tablespoons`. Abbreviations like `tsp.` and `tbsp.` become full words.
+- **Salt**: keep as written (weight or spoon measure). Never convert to ml.
+- **Spices, dried herbs, and small solid seasonings** (pepper, chili flakes, cumin, paprika, etc.): keep as spoon measures or weight. Do not convert to ml.
 - Strip all ads, SEO filler, author bios, and "jump to recipe" content
 - Keep any useful tips, variations, or notes that are actually part of the recipe
 - Use `source` frontmatter for the original URL
 - Infer tags from context: one primary type tag (`#mains`, `#sides`, `#soups`, `#salads`, `#desserts`, `#drinks`, `#breads`, `#sauces`, `#snacks`) plus descriptive tags (`#vegetarian`, `#vegan`, `#gluten-free`, `#quick`, `#weeknight`, etc.)
 - Set `date` to today: 2026-04-18
 
-**3. Verify by fetching again.** Fetch the same URL a second time. Cross-check:
+**3. Verify by fetching again.** Fetch the same URL a second time using the same method that succeeded. Cross-check:
 - Are all ingredient groups present? (nothing dropped)
 - Are step counts consistent?
 - Are the metric conversions accurate?
