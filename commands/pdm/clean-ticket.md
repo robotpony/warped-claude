@@ -60,5 +60,17 @@ Rewrite a rough or verbose ticket into a clean, scannable format optimized for d
 ## Output
 
 4. Print the rewritten ticket as markdown text.
-5. Do not save to a file unless the user asks.
-6. If the rewrite dropped significant content from the original (entire sections, specific requirements), note what was cut and why at the end.
+5. If the rewrite dropped significant content from the original (entire sections, specific requirements), note what was cut and why at the end.
+
+## Save to vault
+
+6. After printing the rewritten ticket, save it to `discussions/<slug>-<month>-<d>-<yyyy>.md` (e.g. `discussions/gross-profit-metric-april-21-2026.md`).
+   - Use a short kebab-case slug derived from the title.
+   - If the source includes tags or a customer name, add inline tags at the top of the file (e.g. `#astound #data-out`).
+   - If references or source links exist in the original, preserve them in a `## References` section at the end.
+7. Find the current weekly log in `log/2026/`.
+8. Add a one-line link under the most relevant task section, or under the current day if no section fits:
+   ```
+   - [ ] Review [[<slug>]] and decide next steps #todo
+   ```
+9. Report the file path and the weekly log entry to the user.
