@@ -45,16 +45,18 @@
       "/Users/mx/writing/obsidian-plugins/space-command/node_modules/obsidian",
       "/Users/mx/projects/recipe-book",
       "/Users/mx/writing/obsidian-plugins/eat-well"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "statusLine": {
     "type": "command",
     "command": "bun x ccusage statusline"
   },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1753999779074
   },
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true
-  }
+  "skipAutoPermissionPrompt": true
 }

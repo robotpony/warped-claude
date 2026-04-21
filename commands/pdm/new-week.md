@@ -18,33 +18,45 @@ Combined weekly kickoff. Runs carry-forward, reviews priorities, proposes next t
    - **Done**: leave in previous log (marked `[x]`)
    - **Rolling forward**: open `- [ ]` items to carry into new log
    - **Dead**: items that appear stale (carried 2+ weeks with no progress noted). Flag these.
-5. Clean up rolling items:
+5. In the **previous** week's log, tag every carried-forward item with `#moved` so it's
+   clear the item migrated. (Add `#moved` at the end of the line; don't change the
+   checkbox state.)
+6. Clean up rolling items:
    - Group by workstream (diagnostics, search, benchmarks, NB 3.0, onboarding, notifications, admin, etc.)
    - Drop items that are now tracked in linked docs or ClickUp tickets (note the link instead)
-6. Summarize what got done last week in 3-5 bullets.
+7. Summarize what got done last week in 3-5 bullets.
 
 ## 3. Review priorities
 
-7. Read the Development Priorities doc (`gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`), top/current draft only (stop at first repeated section header).
-8. For the App section, identify:
+8. Read the Development Priorities doc (`gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`), top/current draft only (stop at first repeated section header).
+9. For the App section, identify:
    - Staffed projects (🟢/🟡) with no tasks carrying forward — coverage gaps
    - Sub-items with dates in the next 2 weeks — upcoming deadlines
    - Items marked ← or ➕➕ — active focus areas
 
-## 4. Propose next tasks
+## 4. Surface reminders
 
-9. Based on carry-forward items + priority gaps + upcoming dates, propose a task list:
-   - **P0**: blocking, time-sensitive, or foundational
-   - **P1**: important but not urgent
-   - **Focus**: items that need deep work blocks
-   - **Parked**: items to track but not act on this week
-10. Present the proposed list to the user for review before creating the file.
+10. Read `wiki/weekly-reminders.md`.
+11. For each due reminder (weekly items are always due; biweekly/monthly/quarterly per the cadence rules in `/pdm:reminders`):
+    - Check whether a matching task already exists in the carry-forward items. If so, skip it (already covered).
+    - Otherwise, add it to a **Reminders** group in the proposed task list, tagged `#reminder`.
+12. Check the previous week's log for reminders that were due but never completed or carried. Flag these as "missed last week" in the proposal so the user can decide.
 
-## 5. Create the weekly log
+## 5. Propose next tasks
 
-11. After user approval (or edits), create `log/2026/<Month D, YYYY>.md` using the template at `_templates/Week of @date.md`.
-12. Populate:
-   - **Goals and tasks this week**: approved task list, grouped by workstream
+13. Based on carry-forward items + priority gaps + upcoming dates + due reminders, propose a task list:
+    - **P0**: blocking, time-sensitive, or foundational
+    - **P1**: important but not urgent
+    - **Focus**: items that need deep work blocks
+    - **Reminders**: due recurring tasks from `wiki/weekly-reminders.md`, tagged `#reminder`
+    - **Parked**: items to track but not act on this week
+14. Present the proposed list to the user for review before creating the file.
+
+## 6. Create the weekly log
+
+15. After user approval (or edits), create `log/2026/<Month D, YYYY>.md` using the template at `_templates/Week of @date.md`.
+16. Populate:
+   - **Goals and tasks this week**: approved task list, grouped by workstream. Reminders go in an **Admin / Rituals** workstream group (not scattered across project groups).
    - **Release notes**: pull tasks in "release notes" ClickUp status from NB3.0 Iterations (same as `/pdm:release-notes`)
    - **Context**: carry-forward summary including:
      - Key decisions and threads from previous week
@@ -53,10 +65,10 @@ Combined weekly kickoff. Runs carry-forward, reviews priorities, proposes next t
      - Any OOO or scheduling notes
    - **Eng Log**: empty day sections (Friday through Monday)
 
-## 6. Present
+## 7. Present
 
-13. Show the user the complete new log.
-14. Flag:
+17. Show the user the complete new log.
+18. Flag:
     - Items you had to guess at (priority, grouping, ownership)
     - Stale items you dropped (so user can override)
     - Priority coverage gaps (staffed projects with no tasks)
