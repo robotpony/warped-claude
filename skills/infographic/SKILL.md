@@ -100,7 +100,7 @@ After the concept locks and before delivering v1, set the expectation:
 
 Only when the user asks. Default workflow:
 1. Build the HTML first (everything benefits from being viewed as HTML during iteration).
-2. Render to PNG via Chrome headless: `google-chrome --headless --screenshot=output.png --window-size=2400,1600 --force-device-scale-factor=2 file.html` (adjust window-size to match the visual's aspect ratio).
+2. Render to PNG via `shot-scraper`: `shot-scraper file.html -o output.png --width 1200 --retina`. Auto-detects full page height and renders at 2x for crisp text. Pass the file path directly, not a `file://` URL.
 3. For .pptx: embed the PNG into a slide via python-pptx.
 
 ## What not to do

@@ -17,14 +17,13 @@ Do not skip the concept phase. Do not shortcut straight to HTML.
 After the user approves a version (or after v1 if they haven't asked for changes):
 
 1. Get the final HTML path from the skill output.
-2. Use Chrome headless to render a screenshot:
+2. Use `shot-scraper` to take a full-page retina screenshot. It auto-detects the page height (no guessing) and renders at 2x for crisp text:
 
 ```bash
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless --disable-gpu --screenshot="$SCREENSHOT_PATH" \
-  --window-size=2400,1600 --force-device-scale-factor=2 \
-  "file://$HTML_PATH"
+shot-scraper "$HTML_PATH" -o "$SCREENSHOT_PATH" --width 1200 --retina
 ```
+
+Pass the file path directly (not a `file://` URL). `--width 1200` matches the infographic's max-width; `--retina` renders at 2x device pixel ratio.
 
 3. Save the screenshot to `/Users/bruce/notes/images/<slug>.png` where `<slug>` matches the HTML filename without the version suffix (e.g., `page-diagnostics-pipeline-xray.png`). If a file with that name already exists, overwrite it (the latest version is the one we want embedded).
 
