@@ -107,8 +107,9 @@ Define roles, then fill with brand colors. Avoid pure black/white.
 **Brand colour override:** Start with the default palette above. Replace accent colours with brand colours when available. Keep paper/ink defaults unless the brand specifies explicit background/text colours.
 
 **Rules:**
-- Background is always `--paper` (off-white), never `#FFF`
+- Background is always `--paper` (off-white), never `#FFF` and never dark
 - Primary text is `--ink` (warm near-black), never `#000`
+- **No dark mode.** The editorial aesthetic depends on the warm paper/ink foundation. Dark backgrounds force a complete palette replacement that produces generic dashboard output instead of designed editorial visuals. If a dark theme is requested, decline and offer to adjust warmth or contrast instead.
 - Use 2-5 accent colors, each tied to a category/role (not decorative)
 - Tones should be warm and muted; saturated primaries look out of place against the paper/ink palette
 - A color appearing in the diagram must match the color used in the legend/labels

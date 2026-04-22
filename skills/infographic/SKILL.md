@@ -74,7 +74,7 @@ Within the chosen type, propose 2-3 concepts. Each concept describes:
 
 Get the user's approval on one concept before writing any code.
 
-## Build (HTML)
+## Build (HTML + companion doc)
 
 Once the concept is locked:
 
@@ -82,6 +82,60 @@ Once the concept is locked:
 2. **Use inline SVG for custom diagrams.** No Mermaid. See `references/visual-design.md` for SVG techniques (gradient beams, convergence polygons, stem connectors) that produce designed output.
 3. **Test readability:** open the file at 100% browser zoom on a standard laptop. Every word should be comfortable, not strained. If the user has to zoom, the type is too small.
 4. **Save with a versioned filename.**
+5. **Write the companion doc** (see below).
+
+## Companion doc (Obsidian markdown)
+
+Every infographic gets a companion `.md` file saved alongside the HTML. This is the **content source** for the visual: a human-readable, editable document that captures the story, structure, and text. A person should be able to read it, revise it, and hand it back to regenerate the infographic.
+
+**Filename:** same slug as the HTML, no version suffix: `<slug>.md` (e.g., `page-diagnostics-pipeline-xray.md`). Saved to the same output directory as the HTML.
+
+**Structure:**
+
+```markdown
+#infographic
+
+Visual type: [editorial illustration | system map | process flow | ...]
+Audience: [who this is for]
+Key message: [the 1-2 things the viewer should walk away with]
+
+## Story
+
+[2-4 paragraphs of narrative prose. What is this infographic saying? Write it
+as if explaining the concept to someone who will never see the visual. This is
+the editorial backbone: the argument, the flow, the "so what."]
+
+## Sections
+
+### [Section name]
+
+[Text content for this section. Include all copy that appears in the visual:
+headlines, body text, labels, callouts, stats. Preserve hierarchy.]
+
+[Repeat for each section in the visual.]
+
+## Diagrams
+
+[ASCII versions of any visual diagrams, charts, or flows. Use the vault's
+ASCII diagram conventions (indentation for hierarchy, dot leaders, no
+box-drawing characters). One fenced code block per diagram.]
+
+## Sources and data
+
+[Bullet list of source documents, data points, and references used.
+Link to vault notes where applicable.]
+```
+
+**Rules:**
+- Write prose in the Story section, not bullet dumps. The story drives the visual.
+- Sections should mirror the visual's structure top-to-bottom. A designer reading the doc should know what goes where.
+- ASCII diagrams don't need to be pixel-perfect reproductions. They capture the structure and data, not the styling.
+- Include every piece of text content from the HTML. The doc is the single source for copy.
+- Use `#infographic` tag at the top for vault search.
+- No YAML front-matter. No H1 title (Obsidian renders the filename).
+- Canadian English spelling. No em-dashes.
+
+**When to update:** the companion doc is written with v1 and updated on any version where content changes (new sections, revised copy, restructured diagrams). Pure polish rounds (typography, spacing, colour tweaks) don't require a doc update.
 
 ## Iteration
 
@@ -96,12 +150,33 @@ After the concept locks and before delivering v1, set the expectation:
 
 **Version every save by default.** `<name>-v1.html`, `v2`, `v3`. Don't overwrite. The user can opt out by saying "stop versioning" if a small change shouldn't bump the version.
 
+## Pagination
+
+When an infographic is long enough to warrant multiple screenshots (two or more distinct visual sections), wrap each logical page in a `<section class="page" id="page-N">` element:
+
+```html
+<section class="page" id="page-1">
+  <!-- overview: header, legend, pipeline diagram -->
+</section>
+<section class="page" id="page-2">
+  <!-- details: phase descriptions, cross-cutting, closing -->
+</section>
+```
+
+**Rules:**
+- Each `.page` section should be a self-contained visual unit that reads well as a standalone image.
+- Add no styling to `.page` itself (no borders, backgrounds, or margins). It's a semantic wrapper for screenshot targeting, not a visual element.
+- Use sequential IDs: `page-1`, `page-2`, etc.
+- Short infographics that fit comfortably in a single screenshot don't need `.page` wrappers.
+- The `pdm:infographic` command auto-detects `.page` sections and produces one PNG per page, or falls back to a single full-page screenshot when no pages exist.
+
 ## On request: PNG / .pptx / other formats
 
 Only when the user asks. Default workflow:
 1. Build the HTML first (everything benefits from being viewed as HTML during iteration).
-2. Render to PNG via `shot-scraper`: `shot-scraper file.html -o output.png --width 1200 --retina`. Auto-detects full page height and renders at 2x for crisp text. Pass the file path directly, not a `file://` URL.
-3. For .pptx: embed the PNG into a slide via python-pptx.
+2. Render to PNG via `shot-scraper`: `shot-scraper file.html -o output.png --width 1080 --retina`. Auto-detects full page height and renders at 2x for crisp text. Pass the file path directly, not a `file://` URL.
+3. For paginated infographics with `.page` sections, use `shot-scraper` with `-s` to screenshot each page individually (see Pagination above).
+4. For .pptx: embed the PNG(s) into slides via python-pptx.
 
 ## What not to do
 
@@ -110,5 +185,7 @@ Only when the user asks. Default workflow:
 - Don't use Mermaid or auto-generated diagrams. They produce functional but generic output.
 - Don't go below 13px for any text. Don't go below 18px for body text on desktop.
 - Don't use pure black or pure white. Use warm near-black ink and off-white paper.
+- Don't use dark mode or dark backgrounds. The editorial aesthetic depends on the warm paper/ink palette in `visual-design.md`. If the user requests dark mode, explain that the skill's design system is light-only and offer to adjust warmth or contrast instead. A dark background replaces the entire palette and produces generic dashboard output, not editorial visuals.
+- Don't invent a new colour palette. Always start from the palette in `visual-design.md` and adapt accent colours for the content. Brand colour overrides replace accents, not the paper/ink foundation.
 - Don't try to make v1 perfect. Concept first, polish later.
 - Don't guess at data. If the visualization needs data you don't have, ask for it.
