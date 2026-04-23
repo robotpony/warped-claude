@@ -25,52 +25,59 @@ Use `shot-scraper` to screenshot each page section individually:
 
 ```bash
 # For each page section found in the HTML:
-shot-scraper "$HTML_PATH" -s "#page-1" -o "$IMG_DIR/<slug>-overview.png" --width 1080 --retina --wait 1500 -p 48
-shot-scraper "$HTML_PATH" -s "#page-2" -o "$IMG_DIR/<slug>-details.png" --width 1080 --retina --wait 1500 -p 24
+shot-scraper "$HTML_PATH" -s "#page-1" -o "$IMG_DIR/<slug>-overview.png" --width 780 --retina --wait 1500
+shot-scraper "$HTML_PATH" -s "#page-2" -o "$IMG_DIR/<slug>-details.png" --width 780 --retina --wait 1500
 ```
 
 Name each PNG descriptively based on what the page contains (e.g., `-overview`, `-details`, `-timeline`). Don't use generic `-page-1`, `-page-2` suffixes. Read the page content to pick a meaningful name.
 
-Pass the file path directly (not a `file://` URL). `--width 1080` gives a crisp 2160px retina image; `--retina` renders at 2x device pixel ratio. `-p 48` adds padding around the selector match (use 48 for the first page, 24 for subsequent pages). `--wait 1500` ensures fonts load.
+Pass the file path directly (not a `file://` URL). `--width 780` keeps the viewport narrower than the content's `max-width` so the content fills the frame without dead space on the right (renders at 1560px retina). Do not use `-p` (padding) flags; they add whitespace outside the content area. `--retina` renders at 2x device pixel ratio. `--wait 1500` ensures fonts load.
 
 ### Single-page infographics (no `.page` sections)
 
 Use `shot-scraper` to take a full-page retina screenshot:
 
 ```bash
-shot-scraper "$HTML_PATH" -o "$SCREENSHOT_PATH" --width 1080 --retina
+shot-scraper "$HTML_PATH" -o "$SCREENSHOT_PATH" --width 780 --retina --wait 1500
 ```
 
 ### Output location
 
-Save screenshots to `/Users/bruce/notes/images/<slug>[-suffix].png` where `<slug>` matches the HTML filename without the version suffix (e.g., `page-diagnostics-pipeline-xray.png` or `nb-data-health-roadmap-overview.png`). If a file with that name already exists, overwrite it (the latest version is the one we want embedded).
+Save all output (screenshots, HTML, companion doc) to the project subfolder under `infographics/` (see step 3).
 
-## 3. File the HTML and companion doc in the vault
+## 3. File everything in the infographics folder
 
-1. Copy the final HTML to `/Users/bruce/notes/projects/<slug>.html`.
-2. Copy the companion doc to `/Users/bruce/notes/projects/<slug>.md`.
-3. If there's an obvious parent project folder (e.g., `projects/diagnostics/`), file both there instead of `projects/` root.
+All infographic assets go in `/Users/bruce/notes/infographics/<project>/`, organized by project:
 
-The companion doc is the editable content source for the infographic. It lives next to the HTML so a human can revise the story, sections, or diagrams and hand it back for regeneration.
+1. Determine the project name from context (e.g., `diagnostics`, `onboarding`, `search`). If unclear, ask.
+2. Create the project subfolder if it doesn't exist: `/Users/bruce/notes/infographics/<project>/`.
+3. Copy to that folder:
+   - The final HTML: `<slug>.html`
+   - The companion doc: `<slug>.md`
+   - Screenshot PNGs: `<slug>.png` or `<slug>-<suffix>.png`
+
+If a file with that name already exists, overwrite it (the latest version is the one we want embedded). The companion doc is the editable content source for the infographic; it lives next to the HTML so a human can revise the story, sections, or diagrams and hand it back for regeneration.
 
 ## 4. Link into the weekly log
 
 1. Find the current week's log in `log/2026/`.
-2. Add a line in the Eng Log section under today's date entry.
+2. Add an entry in the Eng Log section under today's date.
 
-For single-page infographics:
-```
-- Created infographic: ![[<slug>.png]] ([[<slug>.html|interactive version]])
-```
+**Do not embed screenshots inline** (`![[...]]`). Infographic PNGs are too large for useful inline display. Instead, link to both the interactive HTML and each PNG by name.
 
-For paginated infographics, embed each page image in sequence:
+If today already has an "Infographics:" list, append to it. Otherwise create one.
+
+For single-page infographics, add a numbered item:
 ```
-- Created infographic: ([[<slug>.html|interactive version]])
-  ![[<slug>-overview.png]]
-  ![[<slug>-details.png]]
+Infographics:
+1. Short description — [[<slug>.html|interactive]] · [[<slug>.png|PNG]]
 ```
 
-The `![[...]]` embeds the screenshot inline. The `([[...|interactive version]])` links to the HTML for anyone who wants to open it.
+For paginated infographics, list each page PNG:
+```
+Infographics:
+1. Short description — [[<slug>.html|interactive]] · [[<slug>-overview.png|overview]] · [[<slug>-details.png|details]]
+```
 
 If today's date section doesn't exist in the Eng Log, create it.
 
@@ -80,4 +87,4 @@ If today's date section doesn't exist in the Eng Log, create it.
 - **Light mode only.** Always use the warm paper/ink palette from `visual-design.md` (off-white `#F7F5F0` background, near-black `#1A1A2E` text). Never use dark backgrounds, even in auto mode or when the concept phase is compressed. This is non-negotiable. Load `references/visual-design.md` and use its CSS custom properties before writing any HTML.
 - Canadian English spelling. No em-dashes in prose.
 - Don't create a vault note with a H1 title (Obsidian renders the filename).
-- The `images/` folder is for embedded images referenced by vault notes. Screenshots belong there.
+- Infographic assets (HTML, PNG, companion docs) go in `infographics/<project>/`, not `images/` or `projects/`. The `images/` folder is for general vault screenshots only.

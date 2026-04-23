@@ -174,7 +174,7 @@ When an infographic is long enough to warrant multiple screenshots (two or more 
 
 Only when the user asks. Default workflow:
 1. Build the HTML first (everything benefits from being viewed as HTML during iteration).
-2. Render to PNG via `shot-scraper`: `shot-scraper file.html -o output.png --width 1080 --retina`. Auto-detects full page height and renders at 2x for crisp text. Pass the file path directly, not a `file://` URL.
+2. Render to PNG via `shot-scraper`: `shot-scraper file.html -o output.png --width 780 --retina --wait 1500`. Uses a viewport narrower than the content's `max-width` so content fills the frame without dead space. Renders at 1560px retina. Do not use `-p` padding flags. Pass the file path directly, not a `file://` URL.
 3. For paginated infographics with `.page` sections, use `shot-scraper` with `-s` to screenshot each page individually (see Pagination above).
 4. For .pptx: embed the PNG(s) into slides via python-pptx.
 
