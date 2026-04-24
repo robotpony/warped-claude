@@ -41,9 +41,36 @@ Pull tasks in "release notes" status from ClickUp and prepare them for drafting.
 ## Optionally draft release note copy
 
 10. Ask: "Want me to draft customer-facing release note copy for these?"
-    - If yes, write a draft in `release-notes/` using the format of existing files in that folder.
-    - Each item gets: a short headline, 1-2 sentence description of what changed and why it matters, and any relevant context.
+    - If yes, write a draft in `release-notes/` using the Slack announcement format below.
     - Flag items that need screenshots or visual examples.
+
+## Slack announcement format
+
+The release note draft is a Slack-ready announcement. Follow this structure:
+
+```
+:mega: <Theme headline> :mega:
+
+<One-sentence intro summarizing what shipped.>
+
+**<Metric or feature name>.** <Plain-English definition: what it measures, how it works, and what date range or scope applies. One to two sentences.>
+**<Next metric or feature>.** <Definition.>
+...
+
+**Availability and scope:**
+
+<Where these are available (which pages, exports, plans). Any important caveats about methodology, windows, or cohorts. One short paragraph.>
+
+Kudos to <@-mentions of contributors>
+```
+
+Rules for the format:
+- Group items by theme. If a batch spans multiple themes (new metrics, bug fixes, UX improvements), use separate `:mega:` blocks or bold section headers within one post.
+- Each item gets a **bold name** followed by a period, then a customer-facing definition. No bullet points for individual metrics; use line breaks.
+- Definitions describe *what the customer sees*, not implementation details (no feature flag names, no internal field names).
+- The "Availability and scope" section states where to find the feature and any important caveats.
+- Kudos line at the end @-mentions contributors from the ClickUp assignees and watchers.
+- Bug fixes use past tense: "**Custom metrics in table customization.** Fixed an issue where..."
 
 ## Notes
 
