@@ -42,7 +42,7 @@ Produce a Slack-ready weekly status update for a single project area. Output is 
 
 9. From the gathered content, build four lists:
 
-**Done this week** (decisions made, docs written, research completed, tasks checked off):
+**Progress** (decisions made, docs written, research completed, tasks checked off, features shipped):
 - Pull from `[x]` items in the Goals section
 - Pull from Eng Log entries (research summaries, docs created, infographics produced)
 - Pull from linked docs created or substantially updated this week
@@ -74,23 +74,35 @@ Produce a Slack-ready weekly status update for a single project area. Output is 
 11. Output the status update in this structure:
 
 ```
-:fyi: <Project Name> progress (Week of <date>) :fyi:
+:fyi: <Project Name> — Week of <date> :fyi:
 
-Done:
-<2-5 bullets, outcome-focused>
+Progress: <optional parenthetical cross-reference, e.g. "(see #product-releases for release notes)">
+<ticket count as context line, e.g. "12 tickets completed this week on the NB3.0 Iterations board">
+<2-5 bullets, outcome-focused, grouped by theme>
 
-In progress:
-<1-3 bullets, what's actively being worked on and by whom>
+In progress (<ticket count>):
+<1-4 bullets, what's actively being worked on and by whom>
+
+<Optional: "Release notes pending (<count>):" if tickets are awaiting documentation>
 
 Next:
 <1-3 bullets, what's coming and any sequencing>
+
+Blockers:
+<0-3 bullets, only if stakeholder-visible>
 ```
 
-12. **Blockers section is optional.** Only include a `Blockers:` section if there are blockers visible and actionable by the audience (stakeholders, cross-team dependencies). Internal task-level blockers belong in the saved doc, not the Slack post.
+12. **Section naming**: use "Progress" (not "Done") as the first section header. It better fits weeks with a mix of shipped features, bug fixes, and incremental work.
 
-13. **Links**: use real URLs (Notion, ClickUp, Google Docs) inline where they add value, not `[[wikilinks]]`. Slack doesn't render wikilinks. If a key doc has no shareable URL, mention it by name without linking.
+13. **Ticket counts as context**: lead sections with ticket counts where available (e.g., "12 tickets completed", "In progress (10 tickets)"). Gives scale without listing every ticket.
 
-14. If `--detailed` was passed, expand each bullet with 1-2 sentences of context and include a "Key references:" list of linked URLs at the bottom.
+14. **Cross-references over duplication**: if release notes or detailed content exists in another Slack channel (e.g., #product-releases), reference it with a parenthetical rather than repeating the content.
+
+15. **Links are optional**: only include URLs when they genuinely help the reader (e.g., linking a board someone might not know about). For well-known boards and channels, names are sufficient. Don't link for the sake of linking.
+
+16. **Blockers section is optional.** Only include if there are blockers visible and actionable by the audience. Internal task-level blockers belong in the saved doc, not the Slack post.
+
+17. If `--detailed` was passed, expand each bullet with 1-2 sentences of context and include a "Key references:" list of linked URLs at the bottom.
 
 ## Save and link
 
@@ -106,8 +118,9 @@ Next:
 - **Tone**: direct, specific, product-writing-rules style. No corporate filler ("making progress on," "continuing to iterate"). State what happened and what it means.
 - **Attribution**: name people when work is blocked on them or when someone else did notable work. Don't attribute every line to Bruce.
 - **Decisions over activity**: "Decided to scope diagnostics to web-only for Shopify" is more useful than "Had a meeting about diagnostics scope."
-- **Links**: use real URLs (Notion, ClickUp, Google Docs) inline in the Slack version. `[[wikilinks]]` only in the saved vault doc. If a doc has no shareable URL, mention it by name or omit it.
-- **No markdown headers in Slack output**: Slack doesn't render `##`. Use `:fyi:` emoji bookends for the title. Section headers are plain bold text (`Done:`, `In progress:`, `Next:`).
+- **Links are earned**: only include URLs when they help the reader find something they wouldn't otherwise know about. Well-known boards and channels can be referenced by name. Don't link for the sake of linking.
+- **No markdown headers in Slack output**: Slack doesn't render `##`. Use `:fyi:` emoji bookends for the title. Section headers are plain bold text (`Progress:`, `In progress:`, `Next:`).
+- **Cross-reference, don't duplicate**: if release notes or detailed content exists in another Slack channel, reference it with a parenthetical (e.g., "(see #product-releases for release notes)") rather than repeating the content.
 - **Don't include**: parked items (unless they were actively parked this week as a decision), admin tasks, meeting logistics, internal-only analysis docs without shareable URLs.
 - **Two versions**: the saved vault doc can include wikilinks, blockers, key docs lists, and internal detail. The Slack output is leaner: fewer bullets, real URLs, no wikilinks, blockers only if stakeholder-relevant.
 - No em-dashes in output (use commas, semicolons, or separate sentences).
