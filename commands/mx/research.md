@@ -1,3 +1,9 @@
+---
+name: mx:research
+description: Research tools, libraries, or approaches with structured comparison and recommendation
+argument-hint: <research topic>
+---
+
 # Research components, tools, or approaches: $ARGUMENTS
 
 Follow these steps:

@@ -1,10 +1,16 @@
+---
+name: mx:feature
+description: Implement a feature with tests, docs, and version updates
+argument-hint: <feature description>
+---
+
 # Review the project and make the requested changes: $ARGUMENTS.
 
 Follow these steps:
 
-1. Consider the request, use  AskUserQuestion until the tasks are clear, and provide clear plan for review
+1. Consider the request, use AskUserQuestion until the tasks are clear, and provide clear plan for review
 2. Make the requested changes using standard coding techniques, including unit tests
-2. Once completed:
+3. Once completed:
     - mark the step or phase in the plan complete, 
     - ensure the package version is updated, 
     - build the project, 

@@ -1,8 +1,14 @@
+---
+name: mx:iterate
+description: Review feedback, update plans and documentation based on discussion
+argument-hint: <feedback or direction>
+---
+
 # Review the user response: $ARGUMENTS.
 
 Follow these steps:
 
-1. Consider the request, use  AskUserQuestion until the direction is clear, and provide an updated plan, by way of making recommendations and suggestions.
+1. Consider the request, use AskUserQuestion until the direction is clear, and provide an updated plan, by way of making recommendations and suggestions.
 2. Continue the conversation and use of AskUserQuestion to agree on a set of directions and tradeoffs for the remaining work.
 3. Update project definition, plans, and documentation based on the discussion.
 

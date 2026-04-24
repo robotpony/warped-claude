@@ -1,8 +1,14 @@
+---
+name: mx:cleanup
+description: Clean up a project: dead code, docs, consistency, and version updates
+argument-hint: <cleanup scope>
+---
+
 # Clean up task: $ARGUMENTS
 
 Follow these steps:
 
-1. Consider the request, use  AskUserQuestion until the tasks are clear, and provide clear plan for review
+1. Consider the request, use AskUserQuestion until the tasks are clear, and provide clear plan for review
 2. Review the README, changelog for accuracy and consistency, and apply the user's standard styles using the available writing guidelines
 3. Ensure the package version is up to date
 4. Review documentation for unused or extraneous files

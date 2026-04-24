@@ -1,3 +1,9 @@
+---
+name: warped:draft
+description: Write a full first draft from an outline, following blog writing rules
+argument-hint: <outline-path or topic>
+---
+
 # Write a draft post from outline: $ARGUMENTS
 
 1. Read the outline or notes provided (ask with AskUserQuestion if none are provided)

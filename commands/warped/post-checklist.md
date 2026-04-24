@@ -1,3 +1,9 @@
+---
+name: warped:post-checklist
+description: Run a pre-publish quality checklist against a blog post draft
+argument-hint: <post-path>
+---
+
 # Pre-publish checklist for post: $ARGUMENTS
 
 Run through these checks and report pass ✅ / fail ❌ / needs review ⚠️ for each.

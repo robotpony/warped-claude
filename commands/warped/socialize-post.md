@@ -1,3 +1,9 @@
+---
+name: warped:socialize-post
+description: Generate platform-specific social media blurbs for a published post
+argument-hint: <post-path>
+---
+
 # Create social blurbs for post: $ARGUMENTS
 
 Read the post and produce 3 variants for each platform below. Follow `rules/blog-writing-rules.md` for voice and tone.

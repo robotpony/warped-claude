@@ -1,3 +1,9 @@
+---
+name: gdoc-pull
+description: Pull a Google Doc into the Obsidian vault via MCP
+argument-hint: <document name>
+---
+
 # Pull a Google Doc into the vault
 
 Pull "$ARGUMENTS" from Google Drive into the Obsidian vault using the `pull` MCP tool.

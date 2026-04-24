@@ -1,3 +1,9 @@
+---
+name: mx:bug
+description: Analyze and fix a bug with root-cause analysis and regression checks
+argument-hint: <bug description>
+---
+
 # Analyze and fix: $ARGUMENTS
 
 Follow these steps:

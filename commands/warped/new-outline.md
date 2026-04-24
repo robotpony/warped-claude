@@ -1,3 +1,9 @@
+---
+name: warped:new-outline
+description: Outline a new blog post with structure, hooks, and placeholder guidance
+argument-hint: <topic or idea>
+---
+
 # Help outline a new post (as markdown): $ARGUMENTS
 
 1. Ask questions about the provided ideas until you have clarity:
