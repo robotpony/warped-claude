@@ -47,11 +47,12 @@ Save all output (screenshots, HTML, companion doc) to the project subfolder unde
 
 ## 3. File everything in the infographics folder
 
-All infographic assets go in `/Users/bruce/notes/infographics/<project>/`, organized by project:
+All infographic assets go in `/Users/bruce/notes/infographics/<project>/<week>/`, organized by project and week:
 
 1. Determine the project name from context (e.g., `diagnostics`, `onboarding`, `search`). If unclear, ask.
-2. Create the project subfolder if it doesn't exist: `/Users/bruce/notes/infographics/<project>/`.
-3. Copy to that folder:
+2. Determine the current week folder name: use the Monday date of the current weekly log in ISO format (`YYYY-MM-DD`). For example, if the current weekly log is "April 20, 2026.md", the week folder is `2026-04-20`.
+3. Create the path if it doesn't exist: `/Users/bruce/notes/infographics/<project>/<week>/`.
+4. Copy to that folder:
    - The final HTML: `<slug>.html`
    - The companion doc: `<slug>.md`
    - Screenshot PNGs: `<slug>.png` or `<slug>-<suffix>.png`
