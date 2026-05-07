@@ -89,3 +89,69 @@ If today's date section doesn't exist in the Eng Log, create it.
 - Canadian English spelling. No em-dashes in prose.
 - Don't create a vault note with a H1 title (Obsidian renders the filename).
 - Infographic assets (HTML, PNG, companion docs) go in `infographics/<project>/`, not `images/` or `projects/`. The `images/` folder is for general vault screenshots only.
+
+## Quote attribution style
+
+When the infographic includes customer quotes, paraphrases, or any sourced statement, attribution lines MUST be:
+
+- **Italic** (DM Sans italic, ~14px, `var(--ink-dim)`)
+- **Prefaced with an em-dash** (e.g., `— Connor, Ridge advisory board`)
+- On their own line below the quoted content, displayed as `block`
+- Use a single class name (e.g., `.attribution`) consistently across quote cards, bright-spot cards, and any other attributed content — do not split attribution into separate "who" and "what" sub-elements
+
+This is editorial typography for attribution and is the one place em-dashes are permitted in this command's output, even though prose elsewhere avoids them.
+
+Example:
+
+```html
+<div class="quote">
+  <p>"Interactive chat is novel friction. Scheduled reports fit existing behavior."</p>
+  <span class="attribution">— Connor, Ridge advisory board, AI agent test</span>
+</div>
+```
+
+```css
+.attribution {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-dim);
+}
+```
+
+Apply the same treatment to attribution-style lines that aren't strict quotes (e.g., "— David Herrmann, Austin, Stas, Victor (unanimous)" under a card). Consistency across the visual matters more than purity of the "quote" definition.
+
+## Talk track in the companion doc
+
+When the infographic is built to support a presentation, teach-back, briefing, or any spoken delivery, the companion `.md` MUST include a **Talk track** section. Add it immediately after the front-matter and before the `## Story` section.
+
+Use this when the user mentions any of: "teach-back," "presentation," "deck," "briefing," "pitch," "onsite," "all-hands," "demo," "stakeholder review." If unsure, ask once: *"Will this be presented spoken? If yes, I'll add a talk track."*
+
+Talk track structure:
+
+```markdown
+## Talk track
+
+Targeted at [audience and format, e.g. "the Tuesday AM teach-back: 30 min present, 15 min Q&A"]. Times are guidance, not a script. The infographic is open on the screen while you present; each section below corresponds to a section of the visual.
+
+### Open ([N min])
+[2-4 sentences the presenter would actually say. First-person voice. Frame the why-now and the one shift in thinking.]
+
+### [Section name matching the visual] ([N min])
+[What to say walking through this section. Pull out the 1-3 evidence points worth landing verbally; trust the visual to carry the rest. Use direct quotes from the visual where they help.]
+
+[Repeat one block per visual section.]
+
+### Likely Q&A and pre-thought answers
+[3-6 questions the audience is likely to ask, each with a 1-3 sentence answer. Cover the obvious ones (where this fits in the broader roadmap, what it costs to be wrong, who owns the next step) plus 1-2 specific to the topic.]
+```
+
+Rules for the talk track:
+
+- Write in the presenter's first-person voice ("I went into H1 expecting…"). It's a script-shaped doc, not a memo.
+- Section timings should sum to within ±10% of the available time. The presenter will adjust live; the doc gives them a budget.
+- Don't restate the visual content verbatim — give the *delivery* of it. What does the presenter add that the slide doesn't?
+- The Q&A section is where you bake in the user's likely points of contention from the source material. If the source flagged "this depends on X being true," the Q&A should address X.
+- Talk track is updated when the underlying argument changes. Pure visual polish doesn't require a talk track update.
