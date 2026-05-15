@@ -13,3 +13,10 @@ Follow these steps:
 3. Update project definition, plans, and documentation based on the discussion.
 
 The goal of iteration is to progress the current work forward with agreed changes, summarizing any changes in direction. The iteration does not include code changes, but the user can choose to progress to execute the documented plans.
+
+If documents changed and you're on a working branch (not `main` or `master`), commit locally:
+- Run `git status` and review the diff.
+- Stage only the docs you intentionally changed (no `git add -A`).
+- Commit with a HEREDOC message using a `docs:` prefix that names what was iterated on.
+- Do not push. Do not amend prior commits.
+- If you're on `main` or `master`, skip the commit and tell the user.

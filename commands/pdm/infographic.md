@@ -6,13 +6,27 @@ argument-hint: [what to visualize, e.g. "failure modes from the diagnostics PRD"
 
 Create an infographic and file it in the Obsidian vault at `/Users/bruce/notes/`.
 
+## 0. Decide whether to screenshot
+
+Screenshots are **on by default** but can be skipped. Treat the screenshot step as optional when any of the following apply:
+
+- The user explicitly says "no screenshot," "skip screenshot," "html only," "don't screenshot," "no png," or similar.
+- The user asks to "re-render" or "regenerate" an existing infographic *without* mentioning images, and the existing folder already has a PNG (the existing PNG is stale but the user may want to review the HTML before committing to a new render).
+- The infographic is for an internal review pass that won't be linked into the weekly log yet.
+
+When skipping screenshots: produce the HTML and the companion `.md`, file them per step 3, and either skip the weekly log link entirely or use the HTML-only link form in step 4. State up front in your reply that you're skipping screenshots so the user can override.
+
+When in doubt, ask once: *"Skip the PNG screenshot, or generate it as usual?"*
+
 ## 1. Build the infographic
 
 Run the `/infographic` skill with the user's request ($ARGUMENTS). Follow the full concept phase, triage, and build process defined in the skill. The skill saves HTML output to `~/.claude/output/` with versioned filenames.
 
 Do not skip the concept phase. Do not shortcut straight to HTML.
 
-## 2. Screenshot the final version
+## 2. Screenshot the final version (optional — see step 0)
+
+Skip this entire step if step 0 determined screenshots are off. Otherwise:
 
 After the user approves a version (or after v1 if they haven't asked for changes):
 
@@ -55,18 +69,26 @@ All infographic assets go in `/Users/bruce/notes/infographics/<project>/<week>/`
 4. Copy to that folder:
    - The final HTML: `<slug>.html`
    - The companion doc: `<slug>.md`
-   - Screenshot PNGs: `<slug>.png` or `<slug>-<suffix>.png`
+   - Screenshot PNGs: `<slug>.png` or `<slug>-<suffix>.png` *(only if step 2 ran)*
 
 If a file with that name already exists, overwrite it (the latest version is the one we want embedded). The companion doc is the editable content source for the infographic; it lives next to the HTML so a human can revise the story, sections, or diagrams and hand it back for regeneration.
 
+When screenshots were skipped, do **not** delete an existing PNG in the folder — it represents an earlier render and may still be the version linked from the weekly log. Leave it in place; the user can ask for a re-screenshot later.
+
 ## 4. Link into the weekly log
+
+Skip this step entirely when both of these are true: step 2 was skipped *and* the user gave no signal they want this filed in the weekly log this turn (e.g., a draft pass, an internal review, an iteration on an existing deck). When skipping, mention in your reply that the weekly log was not updated so the user can ask for it explicitly.
+
+Otherwise:
 
 1. Find the current week's log in `log/2026/`.
 2. Add an entry in the Eng Log section under today's date.
 
-**Do not embed screenshots inline** (`![[...]]`). Infographic PNGs are too large for useful inline display. Instead, link to both the interactive HTML and each PNG by name.
+**Do not embed screenshots inline** (`![[...]]`). Infographic PNGs are too large for useful inline display. Instead, link to the interactive HTML and to each PNG by name when PNGs exist.
 
 If today already has an "Infographics:" list, append to it. Otherwise create one.
+
+**With screenshots (default):**
 
 For single-page infographics, add a numbered item:
 ```
@@ -78,6 +100,13 @@ For paginated infographics, list each page PNG:
 ```
 Infographics:
 1. Short description — [[<slug>.html|interactive]] · [[<slug>-overview.png|overview]] · [[<slug>-details.png|details]]
+```
+
+**Without screenshots (HTML-only):**
+
+```
+Infographics:
+1. Short description — [[<slug>.html|interactive]]
 ```
 
 If today's date section doesn't exist in the Eng Log, create it.

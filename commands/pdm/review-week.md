@@ -4,6 +4,22 @@ description: Review this week's notes — priorities, gaps, stale items, and wee
 argument-hint: [additional-instructions]
 ---
 
+## Boards I work with
+
+The only ClickUp folder I PM is **MTA**. Other folders in the workspace
+(AI/Assistant, Platform Engineering, Integrations) belong to other PMs —
+do **not** include them in "my boards" metrics, even when activity there is high.
+
+**My folder:**
+- `901314219314` — All Products → MTA. Lists: NB Data Health
+  (`901326479735`), NB3.0 Iterations (`901321226863`), NB Onboarding
+  (`901322053810`), Incrementality Beta (`901323301043`), R&D and future
+  projects (`901324600443`), Alerts & Recommendations (`901324114765`),
+  Product Analytics (`901326479726`).
+
+Pass `folder_ids: ["901314219314"]` to `clickup_filter_tasks` for folder-level
+queries. If MTA is quiet, report it as quiet — do not widen to other folders.
+
 ## Metrics collection
 
 Collect these metrics **first**, before the qualitative review. All counts scoped
@@ -12,16 +28,23 @@ to the current week's log date range.
 1. **TODOs completed** — count `- [x]` items in the weekly log file (including
    `#todone` tagged items). Also check `todos/done.md` for items with a `@date`
    inside this week's range.
-2. **Tickets created** — call `clickup_resolve_assignees` for "me", then use
-   `clickup_filter_tasks` with the user's ID and the week's date range to get
-   tasks created this week. Count them.
-3. **Tickets completed** — use `clickup_filter_tasks` with `include_closed`,
-   `date_done_from`/`date_done_to` for the week, filtered to the user. Count them.
-4. **Vault docs added** — run `git log --since=<monday> --until=<sunday>
+2. **Tickets created (mine)** — call `clickup_resolve_assignees` for "me", then
+   use `clickup_search` with `filters.creators: [<me>]` and
+   `filters.created_date_from`/`to` to get tasks I created this week. Count them.
+3. **Tickets completed (mine)** — use `clickup_filter_tasks` with
+   `assignees: [<me>]`, `include_closed: true`, and `date_done_from`/`to` for the
+   week. Count them.
+4. **Tickets closed in MTA** — use `clickup_filter_tasks` with
+   `folder_ids: ["901314219314"]`, `include_closed: true`, `date_done_from`/`to`
+   for the week, and **no assignee filter**. This captures work shipped by
+   Tong, Karim, Kamil, Kevin, and others in the lists I PM. Group the results
+   by list (NB Data Health, NB3.0 Iterations, NB Onboarding, etc.) and report
+   counts per list with a brief title list.
+5. **Vault docs added** — run `git log --since=<monday> --until=<sunday>
    --name-status --diff-filter=A` and count new `.md` files under `discussions/`,
    `projects/`, `wiki/`, `product planning/`, and `release-notes/`. Exclude
    `log/`, `_templates/`, `gdrive/`, and `todos/`.
-5. **PRDs written** — from the new-doc list above, count files whose name or
+6. **PRDs written** — from the new-doc list above, count files whose name or
    content contains "PRD" or "prd" (in `projects/` or `product planning/`).
 
 ## Qualitative review
@@ -54,8 +77,9 @@ renders the filename).
 | Metric | Count | Notes |
 |--------|-------|-------|
 | TODOs completed | N | source breakdown |
-| ClickUp tickets created | N | brief list |
-| ClickUp tickets completed | N | brief list |
+| ClickUp tickets created (mine) | N | brief list |
+| ClickUp tickets completed (mine) | N | brief list |
+| ClickUp tickets closed in MTA | N | per-list breakdown (e.g. NB3.0 Iterations: 4, NB Data Health: 2). Brief title list |
 | Vault docs added | N | folder breakdown |
 | PRDs written | N | names |
 
