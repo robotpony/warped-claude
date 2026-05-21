@@ -8,8 +8,8 @@ argument-hint: <outline-path or topic>
 
 1. Read the outline or notes provided (ask with AskUserQuestion if none are provided)
 2. Ask for any missing personal anecdotes, specific examples, or dates before writing
-3. Write a full first draft following `rules/blog-writing-rules.md`:
-   - Match the post type structure from `rules/blog-writing-reference.md`
+3. Write a full first draft following the `blog-writing` skill (load it first):
+   - Match the post type structure from `reference.md` in that skill directory
    - Use placeholders `[PERSONAL ANECDOTE: ...]` where author content is still needed
    - Canadian English spelling, limit em-dashes, no corporate jargon
 4. After drafting, do a self-check against the anti-patterns in the rules:

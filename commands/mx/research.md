@@ -28,7 +28,7 @@ Follow these steps:
 4. Present findings in the format that fits the decision:
    - **Quick comparison**: Table with key criteria + recommendation
    - **Detailed analysis**: Pros/cons for each option with trade-offs named
-   - **Decision document**: Full writeup per product-writing-rules.md (use for significant architectural choices)
+   - **Decision document**: Full writeup per the `product-writing` skill (use for significant architectural choices)
 
 5. End with:
    - A clear recommendation (or explicit "no recommendation" with reasoning)

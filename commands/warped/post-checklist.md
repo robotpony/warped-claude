@@ -22,7 +22,7 @@ Run through these checks and report pass ✅ / fail ❌ / needs review ⚠️ fo
 - [ ] No meta-commentary ("as we've explored", "to summarize")
 - [ ] Mild profanity: 0-1 uses only, not in headline or opening
 
-## Style (per rules/blog-writing-rules.md)
+## Style (per the `blog-writing` skill — load it first)
 - [ ] Canadian English spelling (colour, favour, organize, center)
 - [ ] Em-dashes: 2 or fewer
 - [ ] Lists: varied length, not all threes

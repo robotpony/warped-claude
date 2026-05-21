@@ -12,11 +12,10 @@ commands/
   mx/        Software engineering (general purpose)
   obs/       Obsidian vault utilities
   gdoc-pull.md   Standalone: pull a Google Doc into the vault
-rules/
-  product-writing-rules.md    PRD structure, formatting, anti-patterns
-  blog-writing-rules.md       Voice, tone, style for blog posts
-  blog-writing-reference.md   Themes, post types, patterns reference
-  blog-writing-guidelines.md  Extended style guide (20+ years of patterns)
+skills/
+  product-writing/   PRD structure, formatting, anti-patterns
+  blog-writing/      Voice, tone, style for blog posts (+ reference.md for themes/types)
+  recipe-writing/    Recipe instruction voice for the Obsidian vault
 ```
 
 Commands are invoked as `/namespace:command` in Claude Code. All accept arguments for context (e.g., `/pdm:meeting-summary path/to/notes.md`).
@@ -113,14 +112,13 @@ Commands for maintaining Obsidian vaults. These assume Claude is run from the va
 |---------|-------------|
 | `/obs:cleanup` | Audits vault structure: finds empty files, misfiled notes, and structure gaps. Offers to fix issues and suggests rule improvements. |
 
-## Rules files
+## Writing skills
 
-These define quality standards that the commands reference. They're loaded automatically by Claude Code when working in any project.
+These define quality standards that the commands reference. Unlike auto-loaded memory, skills load on demand — invoked explicitly (`/blog-writing`), pulled in by a command, or triggered by relevant context.
 
-- **`rules/product-writing-rules.md`** — PRD structure, formatting, anti-patterns, review checklist. Influenced by Paul Graham, John Carmack, and RFC style. Used by prd: and pdm: commands.
-- **`rules/blog-writing-rules.md`** — Voice, tone, style rules for the blog. Canadian English, minimal em-dashes, no corporate jargon. Used by warped: commands.
-- **`rules/blog-writing-reference.md`** — Themes, post types (quick observation through personal experiment), and pattern reference.
-- **`rules/blog-writing-guidelines.md`** — Extended style guide covering 20+ years of writing patterns, anti-patterns for AI-sounding prose, and voice calibration.
+- **`skills/product-writing/`** — PRD structure, formatting, anti-patterns, review checklist. Influenced by Paul Graham, John Carmack, and RFC style. Used by prd: and pdm: commands.
+- **`skills/blog-writing/`** — Voice, tone, style rules for the blog. Canadian English, minimal em-dashes, no corporate jargon. Used by warped: commands. `reference.md` in the same directory covers themes and post types.
+- **`skills/recipe-writing/`** — Recipe instruction voice for the Obsidian vault: ratios-first, sensory cues over timers, no backstory.
 
 ## Setup
 
@@ -128,6 +126,6 @@ These files live in `~/.claude/` and are picked up automatically by Claude Code.
 
 1. Clone this repo into your `~/.claude/` directory (or symlink)
 2. Commands appear as `/namespace:command` in Claude Code
-3. Rules are loaded as global instructions for all projects
+3. Skills appear as `/skill-name` and load on demand
 
 The pdm: commands expect an Obsidian vault and optionally use ClickUp and Notion MCP servers. The warped: and mx: commands work anywhere.

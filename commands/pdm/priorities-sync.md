@@ -9,8 +9,8 @@ Read the Development Priorities doc and produce a current status snapshot.
 ## Input
 
 1. Accept $ARGUMENTS as a section filter. Default to "App" (the user's area). Use "all" for full doc.
-2. Read `gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`.
-3. **Read only the top/current draft** — the file contains historical versions. Stop at the first repeated section header (e.g., second occurrence of "# App").
+2. Fetch the Notion Development Priorities **data source directly** with `mcp__claude_ai_Notion__notion-fetch` on `collection://020011e4-1c05-42f7-8c5d-7ec61bd2adad`. This returns the schema plus all page entries in one call. Do not fetch the database wrapper URL first — the data source ID is stable. Do not read the deprecated `gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`.
+3. Filter the returned entries client-side by the `Area` property (`App`, `Incrementality`, `Data Out`, `Data In`, `Pipeline Core`, `AI`, `Everything Else`). **Do not use `notion-search` to enumerate a section** — search returns semantic matches across all areas and forces per-page verification fetches. Search is for keyword discovery, not section listing.
 
 ## Extract
 
@@ -56,6 +56,6 @@ Read the Development Priorities doc and produce a current status snapshot.
 
 ## Notes
 
-- The priorities doc is the source of truth per CLAUDE.md. Don't editorialize on priority order.
+- The Notion priorities database is the source of truth per CLAUDE.md. Don't editorialize on priority order.
 - Dates in the doc may be past — note whether they appear completed or overdue.
 - Staffing info at the top of each section is important context. Include it in the snapshot header.

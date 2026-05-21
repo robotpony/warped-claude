@@ -13,7 +13,7 @@ Review a PRD for structural quality, decision coherence, and shipping readiness.
    - **Vault file path**: Read the file with the Read tool.
    - **No argument**: Use content already present in the conversation. If no PRD content is visible, ask the user to provide it.
 
-2. Read `~/.claude/rules/product-writing-rules.md` for the review standard. This is the primary quality rubric.
+2. Load the `product-writing` skill for the review standard. This is the primary quality rubric.
 
 ## Delta detection
 

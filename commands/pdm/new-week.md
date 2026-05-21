@@ -29,7 +29,7 @@ Combined weekly kickoff. Runs carry-forward, reviews priorities, proposes next t
 
 ## 3. Review priorities
 
-9. Read the Development Priorities doc (`gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`), top/current draft only (stop at first repeated section header).
+9. Fetch the Notion Development Priorities **data source directly** with `mcp__claude_ai_Notion__notion-fetch` on `collection://020011e4-1c05-42f7-8c5d-7ec61bd2adad` (one call returns schema + all entries). Filter client-side by `Area: "App"`. Do not use `notion-search` to enumerate — it returns semantic matches across all areas. Do not read the deprecated `gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`.
 10. For the App section, identify:
     - Staffed projects (🟢/🟡) with no tasks carrying forward — coverage gaps
     - Sub-items with dates in the next 2 weeks — upcoming deadlines

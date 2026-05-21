@@ -74,7 +74,7 @@ Write a structured bug report from user-provided input (Slack thread, screenshot
 
 ## Formatting rules
 
-- ASCII layout sketches follow the rules in `~/.claude/rules/product-writing-rules.md` (indentation for hierarchy, dot leaders, no box-drawing characters)
+- ASCII layout sketches follow the rules in the `product-writing` skill (indentation for hierarchy, dot leaders, no box-drawing characters)
 - No em-dashes in prose (use commas or semicolons)
 - Canadian English spelling (colour, behaviour, organize, optimize)
 - Use `[[wikilinks]]` for internal vault references

@@ -1,6 +1,11 @@
+---
+name: blog-writing
+description: "Voice, tone, and style rules for Bruce Alderson's blog posts (warpedperspective.com). Canadian English hybrid, minimal em-dashes, no corporate jargon, no AI-sounding patterns. Load when drafting, editing, or reviewing blog content, or when invoked via /blog-writing. For themes and post types, also load reference.md from this skill directory."
+---
+
 # Blog Writing Rules
 
-Rules for maintaining voice consistency when drafting or editing blog posts. For themes, post types, and examples, see `blog-writing-reference.md`.
+Rules for maintaining voice consistency when drafting or editing blog posts. For themes, post types, and examples, see `reference.md` in this skill directory.
 
 ## Role Clarification
 

@@ -110,7 +110,7 @@ If the source docs include a teardown or screenshots, add a design guide section
 |---|------|---------|---------------------|----------------|
 
 For each view, include:
-- An indented plain-text layout sketch (per product-writing-rules.md diagram style)
+- An indented plain-text layout sketch (per the `product-writing` skill's diagram style)
 - Design intent (why it's structured this way)
 - Key interactions
 - Watch-out-for notes

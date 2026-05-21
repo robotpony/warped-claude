@@ -68,7 +68,7 @@ Rewrite a rough or verbose ticket into a clean, scannable format optimized for d
 6. Before saving, cross-check the rewritten ticket against available sources of truth:
    - **Glossary:** Read `Northbeam Glossary.md` to verify terminology (metric names, product terms, acronyms) is used correctly.
    - **Labeling ontology:** If the ticket involves channels, platforms, or UTMs, check `projects/Northbeam Default Labeling Ontology.md` for correct taxonomy.
-   - **Roadmap:** Check `gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md` to see if this work maps to an existing priority or is net-new.
+   - **Roadmap:** Fetch the data source directly (`mcp__claude_ai_Notion__notion-fetch` on `collection://020011e4-1c05-42f7-8c5d-7ec61bd2adad`) to see if this work maps to an existing priority or is net-new. One call returns all entries — do not enumerate via `notion-search`. Do not use the deprecated gdrive copy.
    - **Style guide:** Check `gdrive/Guides and checklists/Northbeam Requirements Writing & Document Style Guide.md` for any naming or formatting conventions.
 7. If verification surfaces a conflict (wrong term, duplicate roadmap item, misnamed concept), flag it inline with a note like `[Verify: glossary says X, source says Y]`.
 

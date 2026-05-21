@@ -1,6 +1,11 @@
+---
+name: recipe-writing
+description: "Rules for drafting and editing recipe files in the Obsidian vault. Instructional voice (not storytelling), Canadian English, metric units with imperial conversions. Load when writing, editing, or reviewing recipes, or when invoked via /recipe-writing."
+---
+
 # Recipe Writing Rules
 
-Rules for drafting and editing recipe files in the Obsidian vault. Shares language foundations with `blog-writing-rules.md` but optimized for instruction and brevity.
+Rules for drafting and editing recipe files in the Obsidian vault. Shares language foundations with the `blog-writing` skill but optimized for instruction and brevity.
 
 ## Core Principle
 

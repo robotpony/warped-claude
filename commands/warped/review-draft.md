@@ -10,7 +10,7 @@ Re-read (checking for updates to the post) and think deeply about the content. P
 
 - provide a quality score out of 10, based on similarity to Wired or other major tech publications and writers (like Paul Graham, John Carmack, Linus Torvalds, etc.)
 - gauge adherence to the project style guideline using checkmarks ✅ and Xs ❌, including styles for headers, titles, and writing themes
-- Use the style guide at `rules/blog-writing-rules.md` (and `rules/blog-writing-reference.md` for post types and themes)
+- Use the `blog-writing` skill as the style guide (load it; its `reference.md` covers post types and themes)
 - check spelling and grammar, and suggest fixes
 - check for factual correctness
 

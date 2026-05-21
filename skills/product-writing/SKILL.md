@@ -1,6 +1,11 @@
+---
+name: product-writing
+description: "Rules for product briefs, PRDs, RFCs, analyses, decision docs, and status updates. Direct voice, RFC 2119 requirement language, ASCII layout sketches (no box-drawing). Load when writing or reviewing product/engineering docs, or when invoked via /product-writing."
+---
+
 # Product Management Writing Rules
 
-Rules for product briefs, analyses, RFCs, and professional documents. Shares language foundations with `blog-writing-rules.md` but optimized for clarity and decision-making.
+Rules for product briefs, analyses, RFCs, and professional documents. Shares language foundations with the `blog-writing` skill but optimized for clarity and decision-making.
 
 ## Core Principles
 

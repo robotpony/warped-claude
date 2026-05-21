@@ -1,6 +1,6 @@
 # Blog Writing Reference
 
-Reference material for themes, post types, and patterns. For actionable rules, see `blog-writing-rules.md`.
+Reference material for themes, post types, and patterns. For actionable rules, see `SKILL.md` in this directory.
 
 ## Recurring Themes
 

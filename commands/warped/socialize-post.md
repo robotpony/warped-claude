@@ -6,7 +6,7 @@ argument-hint: <post-path>
 
 # Create social blurbs for post: $ARGUMENTS
 
-Read the post and produce 3 variants for each platform below. Follow `rules/blog-writing-rules.md` for voice and tone.
+Read the post and produce 3 variants for each platform below. Follow the `blog-writing` skill (load it first) for voice and tone.
 
 ## Platforms
 

@@ -17,7 +17,7 @@ Produce a structured meeting summary from a transcript or raw notes file.
 4. Identify distinct topics discussed. For each topic:
    - Assign a short title
    - Note the presenter/driver if identifiable
-   - Map to a roadmap priority if one exists (check `gdrive/Projects/Numerical List of Development Priorities CONFIDENTIAL.md`, top section only)
+   - Map to a roadmap priority if one exists (fetch the data source directly via `mcp__claude_ai_Notion__notion-fetch` on `collection://020011e4-1c05-42f7-8c5d-7ec61bd2adad` — one call returns all entries; do not read the deprecated gdrive copy)
    - Note approximate time range if timestamps are present
 
 5. For each topic, extract:
