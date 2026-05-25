@@ -13,19 +13,65 @@ Combined weekly kickoff. Runs carry-forward, reviews priorities, proposes next t
 
 ## 2. Carry forward
 
-3. Read the previous week's log fully, including all `[[linked]]` documents.
-4. Separate TODOs into:
-   - **Done**: completed items (`- [x]`). **Leave these in the previous log. Do NOT carry them into the new log under any circumstance, including items completed but tagged `*(carried)*`, `#todone`, or with a `@date`. The "Goals and tasks this week" section in the new log starts with zero `[x]` items.**
-   - **Rolling forward**: open `- [ ]` items only. These are the items to carry into the new log.
-   - **Dead**: items that appear stale (carried 2+ weeks with no progress noted). Flag these for user decision; do not carry them silently.
-5. In the **previous** week's log, tag every carried-forward item with `#moved` so it's
-   clear the item migrated. (Add `#moved` at the end of the line; don't change the
-   checkbox state.)
-6. Clean up rolling items:
-   - Group by workstream (diagnostics, search, benchmarks, NB 3.0, onboarding, notifications, admin, etc.)
-   - Drop items that are now tracked in linked docs or ClickUp tickets (note the link instead)
-7. **Verify before proceeding:** the rolling-forward set contains only `- [ ]` items. If any `- [x]` item is in the set, remove it.
-8. Summarize what got done last week in 3-5 bullets.
+3. **Spawn a `general-purpose` sub-agent to read the heavy files.** Do NOT read the previous week's log or its linked docs in main context — they're large and the main context needs to stay light for the proposal step, the Notion fetch, and the final write. Use the contract below verbatim; the sub-agent's structured response is what you'll work from.
+
+   <agent-contract>
+   You are reading the previous week's engineering log and its linked vault docs so the main agent can do a weekly carry-forward without loading the full content. The vault is at `/Users/bruce/notes`. The previous week's log is at `log/2026/<previous Monday's date>.md` (the main agent will tell you the exact path).
+
+   Do this:
+
+   1. Read the previous week's log in full.
+   2. For every `[[wikilink]]` in that log, resolve it to a vault file path and read that file in full too. Include the week's summary file at `log/2026/summaries/<date> - summary.md` if it exists.
+   3. Also read the week-before's log (one week earlier) so you can detect items carried 2+ weeks.
+   4. Return your findings in EXACTLY the shape below — no prose intro, no editorializing. Open-item lines must be verbatim copies (preserve every tag, link, italic note, and trailing marker). The main agent re-emits them into the new log; paraphrasing breaks that.
+
+   ## Open items (verbatim)
+   Group by the workstream heading they appear under in the log. For each item, give the verbatim line including all priority tags, dates, italics, and links.
+
+   ### <workstream heading>
+   - <verbatim `- [ ]` line>
+   - ...
+
+   ## Completed last week
+   - Count: N items
+   - Buckets: <e.g., "8 Notion sunsets, 6 hub cleanups, 6 publishes, 6 admin">
+
+   ## Stale (carried 2+ weeks)
+   For each item that appears in BOTH the previous week's log and the week-before's log as `- [ ]`:
+   - "<item subject>" — first appeared <date>, carried <N> weeks, committed <date if any>
+
+   ## Dropped candidates
+   Items that look like throwaway notes (no owner, no date, captured as bullets without checkboxes, or one-line provocations like "POD chat" entries). List them so the main agent can confirm.
+
+   ## What got done (3-5 bullets)
+   Synthesize the week's outcomes. Lead with the most important. Don't list every checked item — bucket them.
+
+   ## Open threads with no owner
+   Items mentioned in the log or linked docs that surface questions/ideas without a clear next step.
+
+   ## Linked docs read
+   - <path>
+   - ...
+
+   ## Meeting notes detected
+   List any `discussions/*.md` files referenced in the week's log so the main agent can mention them in Context.
+
+   That's the entire response. No introduction, no closing summary, no "let me know if you need more." The main agent will parse this directly.
+   </agent-contract>
+
+4. **Tag carried items in the previous week's log with `#moved`.** Do this in ONE shot, not per-line — a per-line loop races vault linters and bloats context. Use a single `Bash` `sed` invocation, e.g.:
+   ```bash
+   sed -i '' '/^- \[ \]/ s/$/ #moved/' "log/2026/<previous Monday>.md"
+   ```
+   This tags every open `- [ ]` line. If the previous log has open items you've decided to *drop* (not carry), edit those lines separately after the bulk tag. **Skip this step if it errors twice** — it's an audit-trail nicety, not load-bearing.
+
+5. From the sub-agent's structured response:
+   - **Rolling forward** = "Open items" section, minus anything in "Dropped candidates" or anything the user explicitly kills during proposal review.
+   - **Done** stays in the previous log; do NOT carry. The new log's "Goals and tasks this week" starts with zero `[x]` items.
+   - **Stale** items get flagged in-line in the proposal (e.g., `*(carried 2w — getting stale)*`) so the user can drop or recommit.
+6. Group rolling items by workstream. Drop items now tracked in linked docs or ClickUp tickets (note the link instead).
+7. **Verify before proceeding:** the rolling-forward set contains only `- [ ]` items. If any `- [x]` slipped in, remove it.
+8. The "What got done" bullets from the sub-agent become the carry-forward summary in step 17.
 
 ## 3. Review priorities
 
@@ -50,8 +96,8 @@ Combined weekly kickoff. Runs carry-forward, reviews priorities, proposes next t
     - **P1**: important but not urgent
     - **Focus**: items that need deep work blocks
     - **Reminders**: due recurring tasks from `wiki/weekly-reminders.md`, tagged `#reminder`
-    - **Parked**: items to track but not act on this week
-15. Present the proposed list to the user for review before creating the file. **Every item in the proposal must be `- [ ]` (open). If a `- [x]` item appears in the proposal, treat that as a bug and remove it before showing the user.**
+    - **Parked changes**: items to add to, remove from, or update in `todos/parked.md` (the parked items log). Do NOT propose a "Parked" section in the new weekly log — parked items live in `todos/parked.md`, not the weekly log.
+15. Present the proposed list to the user for review before creating the file. **Every item in the proposal must be `- [ ]` (open). If a `- [x]` item appears in the proposal, treat that as a bug and remove it before showing the user.** Also surface proposed edits to `todos/parked.md` (additions, removals, or rewording) for approval in the same step.
 
 ## 6. Create the weekly log
 
@@ -65,7 +111,8 @@ Combined weekly kickoff. Runs carry-forward, reviews priorities, proposes next t
       - Upcoming dates from priorities doc
       - Any OOO or scheduling notes
     - **Eng Log**: empty day sections (Friday through Monday)
-18. **Final check before saving:** grep the new log for `- [x]` in the "Goals and tasks this week" section. The count must be zero. If any are present, remove them.
+18. **Apply approved edits to `todos/parked.md`** (additions, removals, rewording). Do not add a "Parked items" section to the new weekly log.
+19. **Final check before saving:** grep the new log for `- [x]` in the "Goals and tasks this week" section. The count must be zero. If any are present, remove them. Also confirm the new log has no `# Parked items` heading.
 
 ## 7. Present
 

@@ -11,8 +11,8 @@ Follow these steps:
 1. Consider the request, use AskUserQuestion until the tasks are clear, and provide clear plan for review.
 2. Set up the working branch:
    - Run `git branch --show-current`.
-   - If on `main` or `master`, create `feat/<short-kebab-slug>` (2-4 words from $ARGUMENTS) and switch to it.
-   - Otherwise stay on the current branch.
+   - If on `main` or `master`, use `EnterWorktree` with name `feat/<short-kebab-slug>` (2-4 words from $ARGUMENTS) — this creates an isolated worktree on a fresh branch so your main checkout stays untouched.
+   - Otherwise stay on the current branch (no worktree).
 3. Make the requested changes using standard coding techniques, including unit tests.
 4. Once completed:
    - Mark the step or phase in the plan complete.

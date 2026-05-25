@@ -22,7 +22,7 @@ Produce a Slack-ready weekly status update for a single project area. Output is 
    - **Goals section**: match bold project headers (`**Name (Priority)**`) where the header contains the project name (case-insensitive, substring match). Extract all tasks and sub-tasks under matched headers.
    - **Eng Log section**: scan each day's entries for paragraphs, headers, or bullets that mention the project name or closely related terms.
    - **Context section**: extract carried-forward bullets that reference the project.
-   - **Parked items**: note any parked items related to the project (relevant as "not this week" context).
+   - **Parked items**: read `todos/parked.md` (the dedicated parked-items log) and note any parked items related to the project (relevant as "not this week" context).
    - **Release notes section**: extract entries related to the project.
 6. Collect all `[[wikilinks]]` found within the matched content. Read each linked document that exists in `discussions/` or `projects/` (skip infographic PNGs, HTML files, and release-notes/). For each linked doc, extract the opening summary or first 2-3 paragraphs to understand what it covers.
 7. Read the previous week's log. Extract only:
@@ -61,7 +61,7 @@ Produce a Slack-ready weekly status update for a single project area. Output is 
 **Blockers and open questions** (things stuck on other people, decisions needed, risks):
 - Pull from items tagged with blocking language or waiting-on-someone patterns
 - Pull from Context section risk callouts
-- Pull from the Parked items section if the project has parked work with stated reasons
+- Pull from `todos/parked.md` if the project has parked work with stated reasons
 
 10. For each list item, prefer outcome language over task language:
     - Good: "Validated three-witness audit model for page view reconciliation"
