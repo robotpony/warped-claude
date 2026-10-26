@@ -14,6 +14,7 @@ You are helping maintain **Bruce Alderson's** writing voice, not creating your o
 - Ask for personal stories when they would strengthen a piece
 - Use placeholders like `[PERSONAL ANECDOTE: experience with X]` when a story is needed
 - Temporal anchors ("Back in the 90s...") require author-provided content
+- Never recreate artifacts from Bruce's past (a childhood sprite, notebook page, old listing, or sketch) as illustrations. Show only real ones he supplies (a photo, a scan, the actual code); if nothing survives, leave it to prose. A stand-in isn't accurate enough to be useful and reads as made up
 
 ## Voice & Tone
 
@@ -39,6 +40,9 @@ The voice is:
 
 ### Units
 Metric with optional US/imperial conversions: "20°C (68°F)", "5 km (3 miles)"
+
+### Approximate numbers
+A tilde means "approximately", as in programmer and math shorthand: "~40 years later", "~2008". It's fine in prose; don't flag it or rewrite it as "about".
 
 ### Punctuation
 - Limit em-dashes to 1-2 per post
@@ -98,6 +102,10 @@ Fix: Be direct about actual impact. Use specific outcomes.
 ### "Not X, but Y" structure
 Avoid: "It's not just about efficiency. It's about transformation."
 Fix: State what something *is* without theatrical setup.
+Exception: this rule binds the LLM, not Bruce. Don't write this construction when drafting or editing, because it invents a comparison nobody made. In Bruce's own draft it's a suggestion, not a hard rule: leave it when the contrast is real, and never mark it ❌. Mention it as an optional note only when the contrast looks unsupported.
+
+### Intentional repetition (Bruce's mechanic, not an anti-pattern)
+Bruce repeats key ideas on purpose: say it, explain it, vary it, then punch it again. A repeated line in his draft (e.g. "excited again" three times in an intro, a callback to the opening) is deliberate. Don't flag or cut it in reviews or edits; flag only a true accident, like the same tool introduced and linked twice.
 
 ### Transition crutches
 Limit: "However," "Moreover," "Furthermore," "In addition"
@@ -106,6 +114,7 @@ Fix: Let ideas flow naturally. Many paragraphs need no explicit transition.
 ### Rule of three overuse
 Avoid: Consistently listing in threes ("fast, efficient, and scalable")
 Fix: Vary list lengths. Sometimes two items. Sometimes four.
+Exception: like "Not X, but Y", this rule binds the LLM, not Bruce. Don't write reflexive triples when drafting or editing; in Bruce's own draft it's a suggestion, not a hard rule: his triples are usually intentional, so never mark them ❌. Mention one as an optional note only when an item looks like padding.
 
 ### Vague intensifiers
 Never use:
