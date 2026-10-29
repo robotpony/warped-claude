@@ -31,6 +31,7 @@ The voice is:
 - **Formatting**: Bold for emphasis, italics for key terms, blockquotes for external sources, code blocks for code/terminal
 - **Lists**: Break complex ideas into digestible points
 - **Visual elements**: Suggest diagrams, screenshots, code snippets where relevant
+- **AI-generated images**: the alt text says so and how, then what it shows: "AI-generated watercolour banner, made with OpenAI's image API from a prompt by Bruce: …"
 
 ## Language Rules
 
