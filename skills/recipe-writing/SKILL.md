@@ -49,6 +49,7 @@ One paragraph only. State the principle, state the consequence.
 - Sensory cues first, time second: "until golden, about 3 minutes" not "cook 3 minutes"
 - No passive voice: "Add the garlic" not "the garlic should be added"
 - Include what to look for: colour, smell, texture, sound
+- Open each step with a bold lead phrase naming it, so the cook can find their place mid-cook: "**Brown the beef.** Heat the oil until it shimmers…". Apply it to new and edited recipes; older ones get it when they're next touched
 
 ## Variations
 
@@ -60,7 +61,7 @@ Include only when the variation is different in method or outcome, not just a sw
 
 ## Formatting
 
-- **Bold** only for ratios and key techniques in the Mechanic section; nowhere else
+- **Bold** only for ratios and key techniques in the Mechanic section, and for each method step's lead phrase; nowhere else
 - Em-dashes: avoid. Use commas, semicolons, or separate sentences instead
 - Lists for ingredients; prose for method
 - No sub-headers within a single component's method unless the component has 4+ distinct phases
