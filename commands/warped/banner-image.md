@@ -6,9 +6,9 @@ argument-hint: <post-path or idea>
 
 # Generate a banner image prompt for: $ARGUMENTS
 
-This session has no image-generation tool. This command builds the prompt for the
-author to run by hand (usually the OpenAI Playground; `tools/banner.sh` in w42 calls
-the API directly when it works), then handles filing the result once it exists.
+This command builds the prompt, generates the banner with `tools/banner.sh` in w42
+(OpenAI's image API; key setup and `--check` are in w42's `tools/IMAGES.md`), and
+runs a mock review cycle: every banner is a mock until the author approves it.
 
 1. Determine the idea to illustrate:
    - If `$ARGUMENTS` is a path to a Hugo post or vault outline, read it and distill the
@@ -49,23 +49,31 @@ the API directly when it works), then handles filing the result once it exists.
    > red, paper bleed and splatter. Loose and abstract, never sharp-edged. No frame, no
    > border, no caption, no text, letters, or words anywhere.
 
-4. Present each prompt ready to copy-paste, and pbcopy them under a `␣⌘ Copy · in w42`
-   line. Note the visual target so the author can judge results against it:
-   - Wide banner: ask for 1536x1024 (or the Playground's widest) with the subject in the
-     middle band, since the banner is cropped to 1536x559
+4. Present each prompt ready to copy-paste. `banner.sh` adds a no-text, no-logos,
+   no-code guard to every prompt and asks for the banner's own wide shape (1536x560,
+   trimmed to 1536x559), so the prompt needn't repeat either. For a post that wants
+   lettering, logos, or sprites on purpose, pass `--allow-marks`. pbcopy the prompts
+   under a `␣⌘ Copy · in w42` line. The visual target, to judge results against:
    - Vibrant, saturated watercolour washes with paper-bleed and splatter texture
    - Simple shapes in loose watercolour abstraction, never a literal, sharp-edged, or
      detailed illustration
+   - Quiet space at the top, so it sits well above a title
    - No frame, border, caption, or embedded text of any kind
 
-5. Once the author has a generated image file, file it:
-   - Crop to 1536x559 and save as a JPEG (quality 85) in the `images.warpedvisions.org`
-     repo at `~/projects/sites/images.warpedvisions.org/YYYY/MM/<slug>.jpg`, where
-     `YYYY/MM` is the post's month. A 1536x1024 image from the API can go through
-     `tools/banner.sh --from <png> <slug>`; anything else, `sips` directly
-   - Add the prompt to that repo's `prompts.md`, and commit there per its CLAUDE.md
-   - The Hugo post references it as the first line after front matter:
-     `<img src="https://images.warpedvisions.org/YYYY/MM/<slug>.jpg" alt="<alt>" />`
+5. Generate and review (each run is a paid API call, so confirm before running):
+   - Run `tools/banner.sh <slug> "<prompt>"` from w42. It saves the banner at
+     `~/projects/sites/images.warpedvisions.org/YYYY/MM/<slug>.jpg` (the current month)
+     and opens it for review
+   - It's a mock: show it to the author, check it against the visual target above,
+     and revise the prompt from their notes. Delete a rejected banner before the next
+     run (the script won't overwrite one)
+   - `tools/banner.sh --from <png> <slug>` recrops a kept full image without a new call
+
+6. Once the author approves it, file it:
+   - Add the prompt to the images repo's `prompts.md`, and commit there per its
+     CLAUDE.md
+   - The post references it in front matter: `banner:` with `src: YYYY/MM/<slug>.jpg`
+     and `alt`
    - The alt text says the image is AI-generated and how, then what it shows:
      "AI-generated watercolour banner, made with OpenAI's image API from a prompt by
      Bruce: …" (site style guide, Other Rules)

@@ -2,11 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm run build:*)",
-      "Bash(node -e:*)",
       "Read(//Users/mx/.claude/**)",
       "Read(//Users/mx/writing/obsidian-plugins/space-command/**)",
       "Read(//Users/mx/**)",
-      "Bash(python3:*)",
       "Bash(npm install --save-dev typescript tsup vitest eslint @eslint/js typescript-eslint prettier)",
       "Bash(npm test)",
       "Bash(npm install --workspace=packages/parser unified remark-parse remark-frontmatter remark-stringify yaml)",
@@ -41,12 +39,12 @@
       "Bash(grep -v \"^$\")",
       "Bash(cargo fix:*)"
     ],
+    "defaultMode": "auto",
     "additionalDirectories": [
       "/Users/mx/writing/obsidian-plugins/space-command/node_modules/obsidian",
       "/Users/mx/projects/recipe-book",
       "/Users/mx/writing/obsidian-plugins/eat-well"
-    ],
-    "defaultMode": "auto"
+    ]
   },
   "statusLine": {
     "type": "command",
@@ -55,8 +53,66 @@
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true
   },
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(swift build:*)",
+      "Bash(swift test:*)",
+      "Bash(xcodegen generate)",
+      "Bash(tools/preview-mocks.sh:*)"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(tools/deploy.sh:*)"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: private (confirmed via gh for robotpony/warped-space-command)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: main (default); no classic branch protection listed, rulesets not queryable here",
+      "**CI/CD deploy targets**: space-command.ca (rsync target for tools/deploy.sh, per CLAUDE.md and corroborated by host-contact evidence)",
+      "**Network posture**: None configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet",
+      "**Source control**: github.com/robotpony/warped-space-command (origin) only",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Swift/SwiftUI macOS app development, this repo)",
+      "**Trusted repo**: /Users/mx/projects/utilities/warped-space-command and its origin remote github.com/robotpony/warped-space-command (private)",
+      "**Org-specific CLIs**: None configured — project-specific tools include xcodegen, swift, xcodebuild, xed, tools/*.sh (deploy, preview, debug) used routinely in this repo",
+      "routine under tools/ prefix: tools/debug.sh, tools/preview.sh, tools/preview-mocks.sh, tools/deploy.sh (dry-run) are part of this repo's documented dev workflow"
+    ]
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1753999779074
   },
-  "skipAutoPermissionPrompt": true
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "autoCompactWindow": 400000
+    }
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/copy-questions.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }
